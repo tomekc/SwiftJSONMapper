@@ -12,6 +12,7 @@
 		405B0A52196C866B00C3D801 /* JSONMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B0A51196C866B00C3D801 /* JSONMapperTests.swift */; };
 		405B0A5C196C887300C3D801 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B0A5B196C887300C3D801 /* JSONObject.swift */; };
 		405B0A5E196CA24B00C3D801 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 405B0A5D196CA24B00C3D801 /* example.json */; };
+		40A2EBF5196DA48E00326EE3 /* example-invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2EBF4196DA48E00326EE3 /* example-invalid.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		405B0A51196C866B00C3D801 /* JSONMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapperTests.swift; sourceTree = "<group>"; };
 		405B0A5B196C887300C3D801 /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
 		405B0A5D196CA24B00C3D801 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		40A2EBF4196DA48E00326EE3 /* example-invalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-invalid.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				405B0A51196C866B00C3D801 /* JSONMapperTests.swift */,
 				405B0A4F196C866B00C3D801 /* Supporting Files */,
 				405B0A5D196CA24B00C3D801 /* example.json */,
+				40A2EBF4196DA48E00326EE3 /* example-invalid.json */,
 			);
 			path = JSONMapperTests;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A2EBF5196DA48E00326EE3 /* example-invalid.json in Resources */,
 				405B0A5E196CA24B00C3D801 /* example.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +428,7 @@
 				405B0A57196C866B00C3D801 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		405B0A58196C866B00C3D801 /* Build configuration list for PBXNativeTarget "JSONMapperTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +437,7 @@
 				405B0A5A196C866B00C3D801 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -67,15 +67,14 @@ class JSONMapperTests: XCTestCase {
         let object = Person(JSONMapper.context(data!))
         
         XCTAssertEqual(object.name!, "John Appleseed", "String field not match")
-        let state = object.address?.state
-        
-        XCTAssertEqual(state!, "CA", "State in nested object do not match")
-        println("ADDRESS")
-        println (object.address?.state?)
     
     }
     
     func testNestedObject() {
+        let object = Person(JSONMapper.context(data!))
+        let state = object.address?.state
+        
+        XCTAssertEqual(state!, "CA", "State in nested object do not match")
         
     }
     
