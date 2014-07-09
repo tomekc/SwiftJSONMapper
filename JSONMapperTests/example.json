@@ -6,5 +6,9 @@
     "address": {
         "city": "Cupertino",
         "state": "CA"
-    }
+    },
+	"roles": [
+		"ADMINISTRATOR",
+		"EMPLOYEE"
+	]
 }

@@ -44,12 +44,14 @@ class JSONMapperTests: XCTestCase {
         var id : Int?
         var address : Address?
         var active : Bool?
+        var roles : Array<String>
         
         init(_ c: JSONDeserializationContext)  {
             self.name = c.getString("name")
             self.id = c.getInt("id")
             self.address = c.getObject("address", ofClass: Address.self)
             self.active = c.getBool("active")
+            self.roles = c.getArray("roles")
         }
     }
     
@@ -71,4 +73,10 @@ class JSONMapperTests: XCTestCase {
         
     }
     
+    func testArray() {
+        let object = Person(JSONMapper.context(data!))
+        let tab = object.roles
+        
+        XCTAssertEqualObjects(["ADMINISTRATOR","EMPLOYEE"], tab, "Arrays don't match")
+    }
 }

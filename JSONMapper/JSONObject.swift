@@ -11,7 +11,6 @@ import Foundation
 protocol JSONSerializable {
     
     init(_ c:JSONDeserializationContext)
-    //func _deserialize(c:JSONDeserializationContext)
     
 }
 
@@ -39,17 +38,16 @@ class JSONDeserializationContext {
         return ofClass(JSONDeserializationContext(source:source[field] as NSDictionary))
     }
     
+    func getArray<T>(field:String) -> Array<T> {
+        return source[field] as Array<T>
+    }
+    
 }
 
 class JSONMapper {
     class func context(data:NSData) -> JSONDeserializationContext {
-        println(data)
 
-        var err:NSErrorPointer?
-        var error : NSError?
-        // TODO use error pointer
-        // Resolve for returning null scenario
-        let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error)
+        let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
         switch (obj) {
             // TODO support arrays as top-level objects
             case let dic as NSDictionary:
@@ -60,24 +58,6 @@ class JSONMapper {
     }
     
     class func toObject(data:NSStream) {
-        
-    }
-    
-}
-
-
-/**
- *
- */
-class JSONObject {
-
-    init(c:JSONDeserializationContext) {
-        
-    }
-    
-    
-    // Override this
-    func _deserialize(c:JSONDeserializationContext) {
         
     }
     
