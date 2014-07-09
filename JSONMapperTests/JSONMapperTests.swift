@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import JSONMapper
 
 class JSONMapperTests: XCTestCase {
     
@@ -30,6 +31,38 @@ class JSONMapperTests: XCTestCase {
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    class TrivialObject : JSONSerializable {
+        var foo : String
+        
+        init(c: JSONDeserializationContext) {
+            self.foo = c.getString("foo")
+//            super.init(c: c)
+        }
+    }
+    
+    
+    class Person : JSONSerializable {
+        var name : String
+        
+        init(c: JSONDeserializationContext)  {
+            self.name = c.getString("name")
+        }
+    }
+    
+    func testSimple() {
+        let json = " { \"foo\" : \"bar\"  }"
+//        let data : NSData = (json as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+    
+        
+        let filepath = NSBundle(forClass: JSONMapperTests.self).pathForResource("example", ofType: "json")
+        let data : NSData = NSData.dataWithContentsOfFile(filepath, options: nil, error: nil)
+        
+        let object = Person(c:JSONMapper.context(data))
+        
+        XCTAssertEqual(object.name, "John Appleseed", "String field not match")
+    
     }
     
 }

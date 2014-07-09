@@ -10,10 +10,19 @@
 		405B0A45196C866A00C3D801 /* JSONMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 405B0A44196C866A00C3D801 /* JSONMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		405B0A4B196C866B00C3D801 /* JSONMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405B0A3F196C866A00C3D801 /* JSONMapper.framework */; };
 		405B0A52196C866B00C3D801 /* JSONMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B0A51196C866B00C3D801 /* JSONMapperTests.swift */; };
+		405B0A5C196C887300C3D801 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B0A5B196C887300C3D801 /* JSONObject.swift */; };
+		405B0A5E196CA24B00C3D801 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 405B0A5D196CA24B00C3D801 /* example.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		405B0A4C196C866B00C3D801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 405B0A36196C866A00C3D801 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 405B0A3E196C866A00C3D801;
+			remoteInfo = JSONMapper;
+		};
+		405B0A5F196CA44100C3D801 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 405B0A36196C866A00C3D801 /* Project object */;
 			proxyType = 1;
@@ -29,6 +38,8 @@
 		405B0A4A196C866B00C3D801 /* JSONMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		405B0A50196C866B00C3D801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		405B0A51196C866B00C3D801 /* JSONMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapperTests.swift; sourceTree = "<group>"; };
+		405B0A5B196C887300C3D801 /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
+		405B0A5D196CA24B00C3D801 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +84,7 @@
 			children = (
 				405B0A44196C866A00C3D801 /* JSONMapper.h */,
 				405B0A42196C866A00C3D801 /* Supporting Files */,
+				405B0A5B196C887300C3D801 /* JSONObject.swift */,
 			);
 			path = JSONMapper;
 			sourceTree = "<group>";
@@ -90,6 +102,7 @@
 			children = (
 				405B0A51196C866B00C3D801 /* JSONMapperTests.swift */,
 				405B0A4F196C866B00C3D801 /* Supporting Files */,
+				405B0A5D196CA24B00C3D801 /* example.json */,
 			);
 			path = JSONMapperTests;
 			sourceTree = "<group>";
@@ -146,6 +159,7 @@
 			);
 			dependencies = (
 				405B0A4D196C866B00C3D801 /* PBXTargetDependency */,
+				405B0A60196CA44100C3D801 /* PBXTargetDependency */,
 			);
 			name = JSONMapperTests;
 			productName = JSONMapperTests;
@@ -200,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405B0A5E196CA24B00C3D801 /* example.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405B0A5C196C887300C3D801 /* JSONObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +244,11 @@
 			isa = PBXTargetDependency;
 			target = 405B0A3E196C866A00C3D801 /* JSONMapper */;
 			targetProxy = 405B0A4C196C866B00C3D801 /* PBXContainerItemProxy */;
+		};
+		405B0A60196CA44100C3D801 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 405B0A3E196C866A00C3D801 /* JSONMapper */;
+			targetProxy = 405B0A5F196CA44100C3D801 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -316,6 +337,7 @@
 		405B0A56196C866B00C3D801 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -327,12 +349,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		405B0A57196C866B00C3D801 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
