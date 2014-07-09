@@ -10,7 +10,7 @@ import Foundation
 
 protocol JSONSerializable {
     
-    init(c:JSONDeserializationContext)
+    init(_ c:JSONDeserializationContext)
     //func _deserialize(c:JSONDeserializationContext)
     
 }
@@ -23,12 +23,18 @@ class JSONDeserializationContext {
         self.source = source
     }
     
-    func getString(field:String) -> String {
-        return self.source[field] as String
+    func getString(field:String) -> String? {
+        return self.source[field] as String?
     }
-    func getInt(field:String) -> Int {
-        return 0
+    
+    func getInt(field:String) -> Int? {
+        return self.source[field] as Int?
     }
+    
+    func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T {
+        return ofClass(JSONDeserializationContext(source:source[field] as NSDictionary))
+    }
+    
 }
 
 class JSONMapper {
