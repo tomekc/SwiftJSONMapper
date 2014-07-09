@@ -31,6 +31,10 @@ class JSONDeserializationContext {
         return self.source[field] as Int?
     }
     
+    func getBool(field:String) -> Bool? {
+        return self.source[field] as Bool?
+    }
+    
     func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T {
         return ofClass(JSONDeserializationContext(source:source[field] as NSDictionary))
     }

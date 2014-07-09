@@ -25,18 +25,7 @@ class JSONMapperTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
+
         
     class Address : JSONSerializable {
         var city : String?
@@ -54,11 +43,13 @@ class JSONMapperTests: XCTestCase {
         var name : String?
         var id : Int?
         var address : Address?
+        var active : Bool?
         
         init(_ c: JSONDeserializationContext)  {
             self.name = c.getString("name")
             self.id = c.getInt("id")
             self.address = c.getObject("address", ofClass: Address.self)
+            self.active = c.getBool("active")
         }
     }
     
@@ -66,7 +57,9 @@ class JSONMapperTests: XCTestCase {
         
         let object = Person(JSONMapper.context(data!))
         
-        XCTAssertEqual(object.name!, "John Appleseed", "String field not match")
+        XCTAssertEqual(object.name!, "John Appleseed", "String field don't match")
+        XCTAssertEqual(object.id!, 9001, "Integer field don't match")
+        XCTAssertEqual(object.active!, true, "Boolean don't match")
     
     }
     
