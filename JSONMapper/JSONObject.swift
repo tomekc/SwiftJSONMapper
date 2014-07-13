@@ -17,13 +17,14 @@ protocol JSONSerializable {
 class JSONDeserializationContext {
     
     var source:NSDictionary
+    var valid:Bool
     
     init(source:NSDictionary?) {
         if let dic = source {
-            self.source = source!
-            
+            valid = true
+            self.source = source!            
         } else {
-            
+            valid = false
             self.source = NSDictionary.dictionary()
         }
     }
@@ -81,7 +82,7 @@ class JSONMapper {
         case let dic as NSDictionary:
             return JSONDeserializationContext(source: dic)
         default:
-            return JSONDeserializationContext(source: NSDictionary.dictionary())
+            return JSONDeserializationContext(source: nil)
         }
         
     }
