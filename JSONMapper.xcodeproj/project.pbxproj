@@ -13,6 +13,7 @@
 		405B0A5C196C887300C3D801 /* JSONObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B0A5B196C887300C3D801 /* JSONObject.swift */; };
 		405B0A5E196CA24B00C3D801 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 405B0A5D196CA24B00C3D801 /* example.json */; };
 		40A2EBF5196DA48E00326EE3 /* example-invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 40A2EBF4196DA48E00326EE3 /* example-invalid.json */; };
+		40E1BAAE196E8777005591C3 /* example-incomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 40E1BAAD196E8777005591C3 /* example-incomplete.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		405B0A5B196C887300C3D801 /* JSONObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONObject.swift; sourceTree = "<group>"; };
 		405B0A5D196CA24B00C3D801 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		40A2EBF4196DA48E00326EE3 /* example-invalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-invalid.json"; sourceTree = "<group>"; };
+		40E1BAAD196E8777005591C3 /* example-incomplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "example-incomplete.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				405B0A51196C866B00C3D801 /* JSONMapperTests.swift */,
 				405B0A4F196C866B00C3D801 /* Supporting Files */,
 				405B0A5D196CA24B00C3D801 /* example.json */,
+				40E1BAAD196E8777005591C3 /* example-incomplete.json */,
 				40A2EBF4196DA48E00326EE3 /* example-invalid.json */,
 			);
 			path = JSONMapperTests;
@@ -217,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40E1BAAE196E8777005591C3 /* example-incomplete.json in Resources */,
 				40A2EBF5196DA48E00326EE3 /* example-invalid.json in Resources */,
 				405B0A5E196CA24B00C3D801 /* example.json in Resources */,
 			);

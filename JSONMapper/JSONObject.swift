@@ -18,8 +18,14 @@ class JSONDeserializationContext {
     
     var source:NSDictionary
     
-    init(source:NSDictionary) {
-        self.source = source
+    init(source:NSDictionary?) {
+        if let dic = source {
+            self.source = source!
+            
+        } else {
+            
+            self.source = NSDictionary.dictionary()
+        }
     }
     
     func getString(field:String) -> String? {
@@ -35,30 +41,46 @@ class JSONDeserializationContext {
     }
     
     func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T {
-        return ofClass(JSONDeserializationContext(source:source[field] as NSDictionary))
+        if let dataField: AnyObject! = source[field] {
+            return ofClass(JSONMapper.buildContext(dataField))            
+        } else {
+            return ofClass(JSONMapper.buildContext(NSDictionary.dictionary()))
+        }
     }
     
     func getArray<T>(field:String) -> Array<T> {
-        return source[field] as Array<T>
+        if let array = source[field] as? Array<T> {
+                return array
+        } else {
+            return []
+        }
+        
     }
     
 }
 
 class JSONMapper {
     class func context(data:NSData) -> JSONDeserializationContext {
-
-        let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
-        switch (obj) {
-            // TODO support arrays as top-level objects
-            case let dic as NSDictionary:
-                return JSONDeserializationContext(source: dic)
-            default:
-                return JSONDeserializationContext(source: NSDictionary.dictionary())
-        }
+        let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+        return buildContext(obj)
     }
     
-    class func toObject(data:NSStream) {
+    class func context(stream:NSInputStream) -> JSONDeserializationContext {
+        let obj:AnyObject = NSJSONSerialization.JSONObjectWithStream(stream, options: nil, error: nil)
+        return buildContext(obj)
+    }
+    
+
+    class func buildContext(jsonObject:AnyObject) -> JSONDeserializationContext {
+        switch (jsonObject) {
+            // TODO support arrays as top-level objects
+        case let dic as NSDictionary:
+            return JSONDeserializationContext(source: dic)
+        default:
+            return JSONDeserializationContext(source: NSDictionary.dictionary())
+        }
         
     }
+    
     
 }

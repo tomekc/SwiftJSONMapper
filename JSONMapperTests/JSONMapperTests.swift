@@ -16,9 +16,14 @@ class JSONMapperTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let filepath = NSBundle(forClass: JSONMapperTests.self).pathForResource("example", ofType: "json")
-        data = NSData.dataWithContentsOfFile(filepath, options: nil, error: nil)
+        data = loadFromFile("example")
 
+    }
+    
+    func loadFromFile(name:String) -> NSData {
+        let filepath = NSBundle(forClass: JSONMapperTests.self).pathForResource(name, ofType: "json")
+        return NSData.dataWithContentsOfFile(filepath, options: nil, error: nil)
+        
     }
     
     override func tearDown() {
@@ -78,5 +83,16 @@ class JSONMapperTests: XCTestCase {
         let tab = object.roles
         
         XCTAssertEqualObjects(["ADMINISTRATOR","EMPLOYEE"], tab, "Arrays don't match")
+    }
+    
+    func testIncomplete() {
+        let dataIncomplete = loadFromFile("example-incomplete")
+        let object = Person(JSONMapper.context(dataIncomplete))
+        
+        XCTAssertEqual(object.id!, 9001)
+        XCTAssert( object.name == .None, "Name should be blank")
+        XCTAssert( object.address == .None, "Nested object should be blank")
+        XCTAssertEqualObjects(object.roles, [])
+        
     }
 }
