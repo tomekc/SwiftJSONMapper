@@ -4,9 +4,7 @@
 
 This is an attempt to solve a problem of mapping JSON data onto matching Swift objects. Apparently, Swift language is designed to be more static than Objective-C, and some reflection voodoo is not going to work. It is hard to predict if it will be ever possible.
 
-## Założenia
-
-Swift objects which are mappable from JSON shall implement  `JSONSerializable` protocol. This is quite strong requirement: however, most likely you are owner of mapped objects and you can conform to multiple protocols.
+With JSONMapper, Swift objects which are mappable from JSON shall implement  `JSONSerializable` protocol. This is quite strong requirement: however, most likely you are owner of mapped objects and you can conform to multiple protocols.
 
 ## Features
 
