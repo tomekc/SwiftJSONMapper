@@ -40,11 +40,12 @@ class JSONDeserializationContext {
         return self.source[field] as Bool?
     }
     
-    func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T {
+    func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T? {
         if let dataField: AnyObject! = source[field] {
             return ofClass(JSONMapper.buildContext(dataField))            
         } else {
-            return ofClass(JSONMapper.buildContext(NSDictionary.dictionary()))
+            return Optional<T>.None
+//            return ofClass(JSONMapper.buildContext(NSDictionary.dictionary()))
         }
     }
     
@@ -61,8 +62,11 @@ class JSONDeserializationContext {
 
 class JSONMapper {
     class func context(data:NSData) -> JSONDeserializationContext {
-        let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
-        return buildContext(obj)
+        if let obj:AnyObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) {
+            return buildContext(obj)
+        } else {
+            return buildContext([])
+        }
     }
     
     class func context(stream:NSInputStream) -> JSONDeserializationContext {

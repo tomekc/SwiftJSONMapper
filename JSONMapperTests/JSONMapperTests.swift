@@ -91,8 +91,17 @@ class JSONMapperTests: XCTestCase {
         
         XCTAssertEqual(object.id!, 9001)
         XCTAssert( object.name == .None, "Name should be blank")
-        XCTAssert( object.address == .None, "Nested object should be blank")
+        XCTAssertFalse( object.address, "Nested object should be blank")
         XCTAssertEqualObjects(object.roles, [])
+    }
+    
+    func testMalformedJSON() {
+        let dataMalformed = loadFromFile("example-invalid")
+        let person = Person(JSONMapper.context(dataMalformed))
         
+        XCTAssert(person.name == .None, "Person should be non-blank")
+        XCTAssertFalse( person.address, "Nested object should be blank")
+        XCTAssertEqualObjects(person.roles, [])
+
     }
 }
