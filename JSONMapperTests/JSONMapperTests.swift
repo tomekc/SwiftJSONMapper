@@ -100,6 +100,7 @@ class JSONMapperTests: XCTestCase {
         let context = JSONMapper.context(dataMalformed)
         let person = Person(context)
         
+        XCTAssertFalse(context)
         XCTAssertFalse(context.valid)
         XCTAssert(person.name == .None, "Person should be non-blank")
         XCTAssertFalse( person.address, "Nested object should be blank")
