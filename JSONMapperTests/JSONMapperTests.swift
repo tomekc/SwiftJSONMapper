@@ -36,7 +36,7 @@ class JSONMapperTests: XCTestCase {
         var city : String?
         var state : String?
         
-        @required init(_ c: JSONDeserializationContext) {
+        init(_ c: JSONDeserializationContext) {
             println("Initializing Address with ")
             println(c)
             self.city = c.getString("city")
