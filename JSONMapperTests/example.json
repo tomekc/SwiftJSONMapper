@@ -2,6 +2,7 @@
     "id": 9001,
     "type": "EMPLOYEE",
     "active": true,
+    "rating": 3.5,
     "name": "John Appleseed",
     "address": {
         "city": "Cupertino",

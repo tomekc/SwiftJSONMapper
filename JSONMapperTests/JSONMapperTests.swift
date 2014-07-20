@@ -50,6 +50,7 @@ class JSONMapperTests: XCTestCase {
         var address : Address?
         var active : Bool?
         var roles : Array<String>
+        var rating : Float?
         
         init(_ c: JSONDeserializationContext)  {
             self.name = c.getString("name")
@@ -57,6 +58,7 @@ class JSONMapperTests: XCTestCase {
             self.address = c.getObject("address", ofClass: Address.self)
             self.active = c.getBool("active")
             self.roles = c.getArray("roles")
+            self.rating = c.getFloat("rating")
         }
     }
     
@@ -67,6 +69,7 @@ class JSONMapperTests: XCTestCase {
         XCTAssertEqual(object.name!, "John Appleseed", "String field don't match")
         XCTAssertEqual(object.id!, 9001, "Integer field don't match")
         XCTAssertEqual(object.active!, true, "Boolean don't match")
+        XCTAssertEqual(object.rating!, 3.5, "Float don't match")
     
     }
     
