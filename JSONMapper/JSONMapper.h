@@ -2,11 +2,11 @@
 //  JSONMapper.h
 //  JSONMapper
 //
-//  Created by Tomek Cejner on 08/07/14.
+//  Created by Tomek on 23.07.2014.
 //  Copyright (c) 2014 Tomek Cejner. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
 //! Project version number for JSONMapper.
 FOUNDATION_EXPORT double JSONMapperVersionNumber;
