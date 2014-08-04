@@ -14,7 +14,7 @@ public protocol JSONSerializable {
     
 }
 
-public class JSONDeserializationContext : LogicValue {
+public class JSONDeserializationContext : BooleanType {
     
     var source:NSDictionary
     public var valid:Bool
@@ -22,15 +22,17 @@ public class JSONDeserializationContext : LogicValue {
     init(source:NSDictionary?) {
         if let dic = source {
             valid = true
-            self.source = source!            
+            self.source = source!
         } else {
             valid = false
             self.source = NSDictionary.dictionary()
         }
     }
-    
-    public func getLogicValue() -> Bool {
-        return valid
+
+    public var boolValue : Bool {
+        get {
+            return valid
+        }
     }
     
     public func getString(field:String) -> String? {
