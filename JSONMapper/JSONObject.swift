@@ -20,13 +20,8 @@ public class JSONDeserializationContext : BooleanType {
     public var valid:Bool
     
     init(source:NSDictionary?) {
-        if let dic = source {
-            valid = true
-            self.source = source!
-        } else {
-            valid = false
-            self.source = NSDictionary.dictionary()
-        }
+        self.source = source ?? NSDictionary()
+        valid = (source != nil)
     }
 
     public var boolValue : Bool {
@@ -52,7 +47,7 @@ public class JSONDeserializationContext : BooleanType {
     }
     
     public func getObject<T:JSONSerializable>(field:String, ofClass:T.Type) -> T? {
-        if let dataField: AnyObject! = source[field] {
+        if let dataField: AnyObject = source[field] {
             return ofClass(JSONMapper.buildContext(dataField))            
         } else {
             return Optional<T>.None
@@ -87,7 +82,7 @@ public class JSONMapper {
     }
     
     public class func context(stream:NSInputStream) -> JSONDeserializationContext {
-        let obj:AnyObject = NSJSONSerialization.JSONObjectWithStream(stream, options: nil, error: nil)
+        let obj:AnyObject! = NSJSONSerialization.JSONObjectWithStream(stream, options: nil, error: nil)
         return buildContext(obj)
     }
     
